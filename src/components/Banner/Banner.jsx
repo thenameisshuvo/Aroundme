@@ -38,7 +38,7 @@ export default function Banner({
 
   return (
     <div 
-      style={{...bannerStyle, ...bannerPosition}}
+      style={{...bannerPosition, ...bannerStyle}}
       className="banner-wrapper bg-indigo-600"
     >
       <div className="max-w-7xl mx-auto py-7 px-6 sm:px-8 lg:px-10">

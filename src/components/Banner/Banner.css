@@ -1,23 +1,28 @@
 .banner-wrapper {
     z-index: 3;
-    box-shadow: 0 4px 24px rgba(60, 72, 88, 0.12);
-    border-radius: 0 0 16px 16px;
+    box-shadow: 0 4px 20px rgba(60, 72, 88, 0.1);
     background: linear-gradient(90deg, #6366f1 0%, #818cf8 100%);
-    padding-bottom: 2px;
+    padding: 0.1rem 1rem; /* Decreased padding */
+    position: relative;
+    overflow: hidden;
 }
 
 .banner-button {
-    transition: box-shadow .3s, background .3s, color .3s;
-    box-shadow: 0 2px 8px rgba(99,102,241,0.08);
+    transition: 0.3s ease;
+    box-shadow: 0 2px 6px rgba(99, 102, 241, 0.08);
     background: linear-gradient(90deg, #fff 0%, #f3f4f6 100%);
     color: #4f46e5;
     font-weight: 600;
-    letter-spacing: 0.02em;
+    padding: 0.4rem 1.2rem; /* Decreased padding */
+    font-size: 0.9rem;      /* Slightly smaller font */
+    border: none;
+    cursor: pointer;
+    outline: none;
 }
 
 .banner-button:hover {
-    box-shadow: 0 8px 24px rgba(99,102,241,0.18);
+    box-shadow: 0 6px 20px rgba(99, 102, 241, 0.16);
     background: linear-gradient(90deg, #e0e7ff 0%, #f3f4f6 100%);
     color: #3730a3;
+    transform: translateY(-2px);
 }
-
