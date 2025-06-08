@@ -2,7 +2,19 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 0;
-    padding-bottom: 0;
-   
+    padding: 20px;
+    background-color: #f9fafb; /* Light background for the page */
+}
+
+.location-details-container {
+    background-color: #ffffff; /* White background for the content card */
+    border-radius: var(--radius); /* Rounded corners */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Subtle shadow for depth */
+    padding: 30px;
+    margin-top: 30px;
+    width: 90%; /* Adjust width as needed */
+    max-width: 1200px; /* Max width for larger screens */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }

@@ -1,10 +1,24 @@
 .title-wrapper {
     display: flex;
-    flex-direction: row;
+    flex-direction: column; /* Changed to column for better stacking on smaller screens */
+    align-items: center; /* Center align items */
+    text-align: center; /* Center align text */
+    margin-bottom: 20px; /* Add some space below the title section */
 }
 
 .location-title {
-    margin-top: 25px;
-    margin-bottom: 5px;
-    font-weight: 700;
+    margin-top: 20px; /* Adjusted margin */
+    margin-bottom: 10px; /* Adjusted margin */
+    font-weight: 800; /* Bolder font weight */
+    font-size: 2.8rem; /* Larger font size for impact */
+    letter-spacing: -0.05em; /* Tighter letter spacing */
+    line-height: 1.1; /* Improved line height */
+    color: #1a202c; /* Darker text color for contrast */
+}
+
+.location-description {
+    font-size: 1.4rem; /* Slightly larger description font */
+    color: #4a5568; /* Muted text color for description */
+    margin-top: 5px;
+    margin-bottom: 15px;
 }

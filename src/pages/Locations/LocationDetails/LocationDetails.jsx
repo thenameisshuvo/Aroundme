@@ -18,22 +18,19 @@ const LocationDetails = () => {
         }
     }, [locationId, locationPhotos, requestCallback])
     const [photos, setPhotos] = useState(null)
-    let x = 0
     useEffect(() => {
         if (locationPhotos != null) {
-            setPhotos([])
-            while (x < locationPhotos.length) {
-                let y = locationPhotos[x].prefix + "1080x900" + locationPhotos[x].suffix
-                setPhotos(arr => [...arr, y])
-                x++
-            }
+            const newPhotos = locationPhotos.map(photo => photo.prefix + "1080x900" + photo.suffix);
+            setPhotos(newPhotos);
         }
-    }, [locationPhotos, setPhotos, x])
+    }, [locationPhotos])
 
     return (
         <div className="page">
-            <LocationTitle title={locationName} description={locationRegion + locationCountry}/>
-            <LocationPhotosGrid locationName={locationName} photos={photos}/>
+            <div className="location-details-container">
+                <LocationTitle title={locationName} description={locationRegion + locationCountry}/>
+                <LocationPhotosGrid locationName={locationName} photos={photos}/>
+            </div>
         </div>
     )
 }

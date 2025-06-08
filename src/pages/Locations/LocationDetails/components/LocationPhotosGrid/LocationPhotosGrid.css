@@ -1,57 +1,54 @@
-.w-85 {
-    width: 85%;
-}
-
-.h-650 {
-    height: 650px;
-}
-
-.rounded {
-    border-radius: 10px;
-}
-
-.start-rounded {
-    border-bottom-left-radius: 10px;
-    border-top-left-radius: 10px;
-}
-
-.end-rounded {
-    border-bottom-right-radius: 10px;
-    border-top-right-radius: 10px;
-}
-
-.top-end-rounded {
-    border-top-right-radius: 10px;
-}
-
-.bottom-end-rounded {
-    border-bottom-right-radius: 10px;
-}
-
-.w-1_2 {
-    width: 45%;
-}
-
-.w-4_10 {
-    width: 40%;
-}
-
-.w-6_10 {
-    width: 60%;
-}
-
-.w-3_10 {
-    width: 28%;
-}
-
-.w-1_6 {
-    width: 15%;
-}
-
-.alternative-photos {
+.photo-grid-container {
     display: flex;
-    margin-top: 5px;
-    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 15px; /* Spacing between images */
+    justify-content: center;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.photo-grid-item {
+    border-radius: var(--radius); /* More rounded corners */
+    overflow: hidden; /* Ensures image corners are rounded */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Consistent shadow */
+    transition: transform 0.2s ease-in-out; /* Smooth hover effect */
+}
+
+.photo-grid-item:hover {
+    transform: translateY(-5px); /* Lift effect on hover */
+}
+
+.photo-grid-item img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover; /* Ensures images cover their area without distortion */
+}
+
+/* Responsive adjustments */
+@media (min-width: 1024px) {
+    .photo-grid-item {
+        width: calc(33.33% - 10px); /* Three columns on large screens */
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+    .photo-grid-item {
+        width: calc(50% - 10px); /* Two columns on medium screens */
+    }
+}
+
+@media (max-width: 767px) {
+    .photo-grid-item {
+        width: 100%; /* Single column on small screens */
+    }
+}
+
+/* Existing styles for specific elements, adjusted or removed as needed */
+.w-85, .h-650, .rounded, .start-rounded, .end-rounded, .top-end-rounded, .bottom-end-rounded,
+.w-1_2, .w-4_10, .w-6_10, .w-3_10, .w-1_6, .alternative-photos {
+    /* These classes might be replaced or integrated into the new grid system */
+    /* Keeping them here for now, but they might become redundant */
 }
 
 @media (max-width: 1280px) {
@@ -130,7 +127,7 @@
 }
 
 .carousel-image {
-    border-radius: 10px;
+    border-radius: var(--radius);
 }
 
 @media (min-width: 768px) {
