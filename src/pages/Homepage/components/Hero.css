@@ -1,0 +1,168 @@
+/* Wrapper Styles */
+.hero-wrapper {
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    min-height: 100vh;
+    transition: background-color 0.3s ease;
+    color: white;
+    background: linear-gradient(135deg, #1c1c3c, #2e2a60, #463a8c);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Gradient animation */
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Strong layered texture overlays */
+.hero-wrapper::before,
+.hero-wrapper::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    mix-blend-mode: overlay;
+    z-index: 1;
+}
+
+/* Noise overlay (fine grain) */
+.hero-wrapper::before {
+    background-image: url("data:image/svg+xml;utf8,<svg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><filter id='noiseFilter'><feTurbulence type='fractalNoise' baseFrequency='0.15' numOctaves='5' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23noiseFilter)'/></svg>");
+    background-repeat: repeat;
+    opacity: 0.15;
+}
+
+/* Subtle diagonal lines pattern */
+.hero-wrapper::after {
+    background-image:
+        linear-gradient(45deg, rgba(255 255 255 / 0.05) 25%, transparent 25%),
+        linear-gradient(-45deg, rgba(255 255 255 / 0.05) 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, rgba(255 255 255 / 0.05) 75%),
+        linear-gradient(-45deg, transparent 75%, rgba(255 255 255 / 0.05) 75%);
+    background-size: 50px 50px;
+    background-position: 0 0, 0 25px, 25px -25px, -25px 0;
+    opacity: 0.08;
+}
+
+/* Ensure content above overlays */
+.hero-wrapper > * {
+    position: relative;
+    z-index: 2;
+}
+
+/* Header */
+.hero-wrapper h1 {
+    font-weight: 900;
+    line-height: 1.2;
+    text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.6);
+}
+
+/* Description */
+.hero-wrapper p {
+    max-width: 42rem;
+    margin: 1.5rem auto;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 400;
+    font-size: 1.1rem;
+    line-height: 1.7;
+    text-align: left;
+    letter-spacing: 0.02em;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Button Styling */
+.hero-wrapper .MuiButton-root {
+    font-size: 1rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 12px;
+    text-transform: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.hero-wrapper .MuiButton-containedWarning {
+    background-color: #f59e0b; /* amber-500 */
+    color: black;
+    box-shadow: 0 6px 12px rgba(245, 158, 11, 0.4);
+}
+
+.hero-wrapper .MuiButton-containedWarning:hover {
+    background-color: #d97706; /* amber-600 */
+    box-shadow: 0 8px 14px rgba(217, 119, 6, 0.5);
+}
+
+.hero-wrapper .MuiButton-outlinedPrimary {
+    border-color: rgba(255, 255, 255, 0.85);
+    color: white;
+    box-shadow: 0 6px 12px rgba(255, 255, 255, 0.1);
+}
+
+.hero-wrapper .MuiButton-outlinedPrimary:hover {
+    background-color: rgba(255, 255, 255, 0.12);
+    box-shadow: 0 8px 16px rgba(255, 255, 255, 0.2);
+}
+
+/* Image Styling */
+.hero-wrapper img {
+    border-radius: 1rem;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    max-width: 100%;
+    height: auto;
+}
+
+.hero-wrapper img:hover {
+    transform: scale(1.03);
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.35);
+}
+
+/* Responsive layout for image container */
+@media (max-width: 1024px) {
+    .hero-wrapper .flex {
+        flex-direction: column;
+        gap: 2rem;
+        align-items: center;
+    }
+
+    .hero-wrapper .w-56 {
+        width: 100%;
+        max-width: 280px;
+        height: auto;
+        aspect-ratio: 7 / 10;
+    }
+
+    .hero-wrapper .h-80 {
+        height: auto;
+        aspect-ratio: 7 / 10;
+    }
+}
+
+@media (max-width: 640px) {
+    .hero-wrapper h1 {
+        font-size: 3rem;
+    }
+
+    .hero-wrapper p {
+        font-size: 1rem;
+        max-width: 100%;
+    }
+
+    .hero-wrapper .w-56 {
+        max-width: 100%;
+        width: 100%;
+        height: auto;
+        aspect-ratio: 7 / 10;
+        border-radius: 12px;
+    }
+
+    .hero-wrapper .flex {
+        gap: 1.5rem !important;
+    }
+}
