@@ -34,11 +34,15 @@ export default function Banner({
     setShow(false);
   };
 
+  // Merge styles with bannerStyle taking precedence over bannerPosition
+  const mergedStyles = { ...bannerPosition, ...bannerStyle };
+
   if (!show) return null;
 
   return (
     <div 
-      style={{...bannerPosition, ...bannerStyle}}
+      {/* Merged styles: bannerStyle takes precedence over bannerPosition */}
+      style={mergedStyles}
       className="banner-wrapper bg-indigo-600"
     >
       <div className="max-w-7xl mx-auto py-7 px-6 sm:px-8 lg:px-10">

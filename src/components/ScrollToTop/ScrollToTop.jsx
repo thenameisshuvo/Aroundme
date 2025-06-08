@@ -1,6 +1,7 @@
 import './ScrollToTop.css';
 import { ArrowCircleUpIcon } from "@heroicons/react/solid";
 import { useEffect, useState } from "react";
+import debounce from "lodash.debounce";
 
 const ScrollToTop = () => {
   const [showScroll, setShowScroll] = useState(false);
@@ -10,8 +11,9 @@ const ScrollToTop = () => {
       setShowScroll(window.scrollY > 250);
     };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    const debouncedHandleScroll = debounce(handleScroll, 100);
+    window.addEventListener("scroll", debouncedHandleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", debouncedHandleScroll);
   }, []);
 
   return (
