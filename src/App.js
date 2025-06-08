@@ -6,11 +6,11 @@ const App = () => {
   return (
     <div>
       <Banner
-        bannerTitle={"Big news!"}
-        bannerDescription={"Introducing Android version of app."}
-        bannerButtonText={"Install app"}
+        bannerTitle={""}
+        bannerDescription={"Meet the developer behind the magic"}
+        bannerButtonText={"Click here"}
         bannerPlace={"top"}
-        bannerButtonUrl={"https://github.com/thenameisshuvo"}
+        bannerButtonUrl={"https://shuvoportfolio.vercel.app"}
       />
       <AppRoutes />
       <ScrollToTop />
