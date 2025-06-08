@@ -1,0 +1,43 @@
+.back-to-top {
+    position: fixed;
+    bottom: 40px;
+    right: 30px;
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #f12711, #f5af19);
+    color: white;
+    border-radius: 50%;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: all 0.4s ease;
+    z-index: 9999;
+    opacity: 1;
+  }
+  
+  .back-to-top:hover {
+    transform: translateY(-6px) scale(1.05);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+  }
+  
+  .fade-in {
+    opacity: 1;
+    pointer-events: auto;
+    transition: opacity 0.4s ease;
+  }
+  
+  .fade-out {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+  }
+  
+  /* Optional: hide on very small screens */
+  @media screen and (max-width: 480px) {
+    .back-to-top {
+      display: none;
+    }
+  }
+  

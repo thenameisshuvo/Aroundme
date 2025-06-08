@@ -1,0 +1,202 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+body {
+  background-color: $bg-color;
+}
+
+.table-container {
+  width: 99%;
+  margin: 0 auto;
+  padding: 0 15px;
+
+  /* Exactly the hero's animated gradient background */
+  background: linear-gradient(135deg, #1c1c3c, #2e2a60, #463a8c);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+  position: relative;
+  overflow: hidden;
+
+  /* Same noise texture overlay */
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml;utf8,<svg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><filter id='noiseFilter'><feTurbulence type='fractalNoise' baseFrequency='0.12' numOctaves='4' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23noiseFilter)'/></svg>");
+    background-repeat: repeat;
+    opacity: 0.12;
+    z-index: 1;
+    mix-blend-mode: overlay;
+  }
+
+  /* Ensure table content is above noise */
+  > * {
+    position: relative;
+    z-index: 2;
+  }
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.table {
+  background-color: transparent; /* Let container background show fully */
+  border-radius: $radius;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.25);
+  width: 100%;
+  margin: 2rem 0;
+  overflow: hidden;
+
+  &-row {
+    display: grid;
+    border-bottom: 2px solid rgba(70, 58, 140, 0.3);
+    padding: 0 1.5rem;
+    transition: background-color 0.25s ease, color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+
+    @include min-tablet {
+      grid-template-columns: 2fr 1fr 2fr 2fr 1fr;
+    }
+
+    @include tablet-to-desktop {
+      grid-template-columns: 1fr 2fr 1fr;
+    }
+
+    th, td {
+      padding: 1rem;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.15); /* highlight on hover */
+      color: #fff;
+      box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+      transform: scale(1.02);
+      cursor: pointer;
+    }
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  &-head {
+    background-color: rgba(70, 58, 140, 0.7);
+    color: rgba(255, 255, 255, 0.95);
+
+    @include desktop {
+      display: none;
+    }
+
+    &-title {
+      display: flex;
+      align-items: center;
+      font-weight: 600;
+      text-transform: capitalize;
+      margin: auto;
+    }
+  }
+
+  &-body {
+    .table-row {
+      transition: $transition-speed linear;
+      transition-property: color, background;
+
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+
+    &-text {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+
+      &::before {
+        margin-right: 1rem;
+        font-weight: 600;
+        text-transform: capitalize;
+      }
+
+      @include desktop {
+        &::before {
+          content: attr(data-title) " :";
+        }
+      }
+
+      @include mobile-xxs {
+        &-name, &-country {
+          &::before {
+            display: none;
+          }
+        }
+      }
+
+      &-name, &-country {
+        @include mobile-s {
+          &::before {
+            display: none;
+          }
+        }
+
+        @include min-tablet {
+          &::before {
+            display: none;
+          }
+        }
+
+        @include tablet-to-desktop {
+          grid-column: 1 / 2;
+          flex-direction: column;
+          grid-row: 2;
+        }
+      }
+
+      &-distance, &-types, &-address {
+        @include tablet-to-desktop {
+          grid-column: 2/3;
+        }
+      }
+
+      &-country {
+        @include tablet-to-desktop {
+          grid-column: 3 / -1;
+        }
+      }
+    }
+  }
+}
+
+.table-body-text-country,
+.table-body-text-types,
+.table-body-text-address,
+.table-body-text-distance {
+  margin: auto;
+  text-align: center;
+}
+
+tr {
+  cursor: pointer;
+}
+
+.table-body-text-name {
+  font-weight: 500;
+}
+
+.user-icon {
+  width: 100%;
+  max-width: 4rem;
+  height: auto;
+  margin-right: 1rem;
+}
+
+.icy-avatar   { background-color: #1ab7c5; }
+.red-avatar   { background-color: #d01e1e; }
+.yellow-avatar{ background-color: #e7bb0d; }
+.green-avatar { background-color: #4bc71a; }
+.blue-avatar  { background-color: #1a42c5; }
+.purple-avatar{ background-color: #5810d5; }
+.pink-avatar  { background-color: #ab16c2; }
