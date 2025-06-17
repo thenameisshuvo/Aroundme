@@ -34,32 +34,28 @@ export default function Banner({
     setShow(false);
   };
 
-  // Merge styles with bannerStyle taking precedence over bannerPosition
   const mergedStyles = { ...bannerPosition, ...bannerStyle };
 
   if (!show) return null;
 
   return (
-    <div 
-      {/* Merged styles: bannerStyle takes precedence over bannerPosition */}
+    <div
       style={mergedStyles}
       className="banner-wrapper bg-indigo-600"
     >
       <div className="max-w-7xl mx-auto py-7 px-6 sm:px-8 lg:px-10">
         <div className="flex items-center justify-between flex-wrap gap-4">
-          <div className="w-0 flex-1 flex items-center gap-3">
+          <div className="flex-1 min-w-0 flex flex-wrap items-center gap-3">
             <span className="flex p-2 rounded-lg bg-indigo-800 shadow-md">
-              <CampaignIcon 
-                fontSize="large" 
-                className="h-8 w-8 text-white" 
+              <CampaignIcon
+                fontSize="large"
+                className="h-8 w-8 text-white"
                 aria-hidden="true"
               />
             </span>
-            <p className="ml-3 font-medium text-lg text-white truncate">
-              <span className="md:hidden">{bannerDescription}</span>
-              <span className="hidden md:inline">
-                <span className="font-bold">{bannerTitle}</span> {bannerDescription}
-              </span>
+            <p className="ml-3 font-medium text-sm sm:text-base md:text-lg text-white leading-snug">
+              <span className="font-bold block sm:inline">{bannerTitle}</span>
+              <span className="block sm:inline"> {bannerDescription}</span>
             </p>
           </div>
 
@@ -83,7 +79,7 @@ export default function Banner({
               className="-mr-1 flex p-2 rounded-md hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-white sm:-mr-2"
             >
               <span className="sr-only">Dismiss</span>
-              <CloseIcon className="h-6 w-6 text-white" aria-hidden="true"/>
+              <CloseIcon className="h-6 w-6 text-white" aria-hidden="true" />
             </button>
           </div>
         </div>
